@@ -1,0 +1,40 @@
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const body = document.body;
+
+    function createSnowflake() {
+      const snowflake = document.createElement("div");
+      snowflake.className = "snowflake";
+      snowflake.style.left = Math.random() * window.innerWidth + "px";
+      snowflake.style.animationDuration = Math.random() * 3 + 2 + "s";
+      snowflake.style.opacity = Math.random();
+      snowflake.style.fontSize = Math.random() * 10 + 10 + "px";
+
+      snowflake.innerHTML = "❄"; // Biểu tượng bông tuyết
+      body.appendChild(snowflake);
+
+      setTimeout(() => {
+        snowflake.remove();
+      }, 5000);
+    }
+
+    setInterval(createSnowflake, 200);
+  });
+</script>
+
+<style>
+  .snowflake {
+    position: fixed;
+    top: 0;
+    pointer-events: none; /* Không cản trở việc nhấp chuột */
+    color: #fff; /* Màu của hoa tuyết */
+    z-index: 9999; /* Nằm trên cùng */
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(100vh);
+    }
+  }
+</style>
